@@ -72,10 +72,10 @@ function randomStringGenerator() {
         string += alphabet[randomIntGenerator(alphabet.length - 1)];
     }
 
-    return string;
+    return `"${string}"`;
 }
 
-function checkForValidDartClassSchema(dartClassSchema) {
+function validDartClassSchema(dartClassSchema) {
     dartClassSchema = dartClassSchema.trim();
     return /^class\s+[a-zA-Z_]+\s+{\s+((int|double|bool|String)\??\s+[a-zA-Z_0-9]+;\s+)+}\s*/.test(dartClassSchema);
 }
@@ -84,11 +84,19 @@ function generateRandom(dataType) {
     switch (dataType) {
         case 'int':
             return randomIntGenerator(1000);
+        case 'int?':
+            return randomIntGenerator(1000);
         case 'double':
+            return randomDoubleGenerator();
+        case 'double?':
             return randomDoubleGenerator();
         case 'bool':
             return randomBoolGenerator()
+        case 'bool?':
+            return randomBoolGenerator()
         case 'String':
+            return randomStringGenerator();
+        case 'String?':
             return randomStringGenerator();
         default:
             return -1;
@@ -102,10 +110,6 @@ function extractClassName(dartClassSchema) {
 }
 
 function extractFields(dartClassSchema) {
-    console.log("==============");
-    console.log("Class Schema");
-    console.log(dartClassSchema);
-    console.log("==============\n\n");
     dartClassSchema = dartClassSchema.replaceAll(/\s+/g, " ");
     let re = /^class\s+[a-zA-Z_]+\s+{(.*)}\s*/;
     let m = re.exec(dartClassSchema.trim());
@@ -130,18 +134,20 @@ function convertToFieldObject(fieldStringItem) {
     return new Field(fieldStringItem[0], fieldStringItem[1]);
 }
 
-function renderDummyDataWithParameters(fieldsObjectsArray) {
-    let className = extractClassName("class Afro {int idUser;double height;bool isFound;String name;}");
-    let renderer = `${className} ${generateRandom('String').toLowerCase()} = new ${className}(`;
+function renderDummyDataWithParameters(fieldsObjectsArray, classSchema) {
+    let className = extractClassName(classSchema);
+    let renderer = `${className} ${getDummyClassName()} = new ${className}(`;
     fieldsObjectsArray.forEach(fieldObject => {
-        renderer += `\n ${fieldObject.label} : ${fieldObject.type == "String" ? `"` : ``}${generateRandom(fieldObject.type)}${fieldObject.type == "String" ? `"` : ``};`
+        renderer += `\n ${fieldObject.label} :${generateRandom(fieldObject.type)}`
     });
     renderer += `\n);`;
 
-    console.log("==============");
-    console.log("Dummy Data\n");
-    console.log(renderer);
-    console.log("==============");
+    return renderer;
+}
+
+function getDummyClassName() {
+    let name = generateRandom('String').toLowerCase();
+    return name.replaceAll(/"/g,'').toLowerCase();
 }
 
 
@@ -151,11 +157,3 @@ function capitalizeFirstLetter(string) {
 
 
 
-renderDummyDataWithParameters(parseFieldsStringToFieldObject(extractFields(`
-class Afro {
-    int idUser;
-    double height;
-    bool isFound;
-    String name;
-}
-`)));
