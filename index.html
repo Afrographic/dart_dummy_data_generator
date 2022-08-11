@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dummy Data Generator</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/dart-icon.png">
     <script>
         function $(target) {
             return document.querySelector(target);
@@ -15,19 +16,25 @@
 </head>
 
 <body>
-    <h1>Dart dummy class generator from class</h1>
+
+    <div class="header">
+        <img src="images/dart.png" alt="">
+
+        <h1>Dart Random Object Generator</h1>
+    </div>
+
     <div class="wrapper">
-        <!-- <div contenteditable="true" id="schema" class="area">
 
-        </div> -->
-
-        <textarea class="area" id="schema"
-            placeholder="Place your class definition here and click generate to get a dummy object from your class"></textarea>
-
+        <div class="workBox">
+            <div class="title">Class Definition</div>
+            <textarea class="area" id="schema"
+                placeholder="Place your class definition here and click generate to get a dummy object from your class"></textarea>
+        </div>
         <button onClick="generateDummyData()">Generate</button>
-
-        <div contenteditable="true" id="renderArea" class="area">
-
+        <div class="workBox">
+            <div class="title">Random Object</div>
+            <div id="renderArea" class="area">
+            </div>
         </div>
 
     </div>
@@ -52,15 +59,15 @@
                     "AnkhoILiAfroIAnkhA"; );
                 </div>
             </div>
-            <div>
 
-            </div>
         </div>
     </div>
 
     <div class="contactMe">
-        Any issue with the tool? <a href="whatsapp://send?phone=+237697830071&text=Hi Afro!">
-            let's discuss on whatsapp
+        <div>Any issue with the tool?</div>
+        <a href="whatsapp://send?phone=+237697830071&text=Hi Afro!" class="linkWhatsapp">
+            <img src="images/whatsapp.svg" alt="">
+            Let's discuss on whatsapp
         </a>
     </div>
 

@@ -1,5 +1,8 @@
 *{
     font-family: 'roboto';
+    color: rgba(255, 255, 255, 0.623);
+    transition: 0.5s;
+    box-sizing: border-box;
 }
 
 body{
@@ -7,16 +10,34 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-color: #141624;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 800px;
+    margin: 12px 0px;
+     border-bottom: 0.5px solid rgba(237, 237, 237, 0.051);
+     margin-bottom: 24px;
+}
+
+.header img{
+    width: 100px;
 }
 
 
 .area{
-    padding: 8px;
-    border:1px solid #aaa;
+    padding: 24px;
     border-radius: 12px;
     width: 400px;
     height: 400px;
     overflow: auto;
+
+        font-size: 14px;
+            background-color: #0865A7;
 }
 
 .wrapper{
@@ -34,24 +55,22 @@ h1{
 .footer{
  margin-top:64px;
     text-align: center;
-    color:#aaa;
+    color:rgba(170, 170, 170, 0.23);
+    
 }
 
 .examples{
-  
     display: flex;
     width: 800px;
-
-
-    gap:64px;
+    gap:32px;
 }
 
-.examples .child{
-    
+.examples .child{ 
     height: 100%;
     padding: 16px;
     border-radius: 14px;
-    background-color: rgb(232, 232, 232);
+    background-color: #22252D;
+    color:#b9b9b9;
 }
 
 .child p{
@@ -60,10 +79,56 @@ h1{
 
 .titleExample{
     padding-bottom: 16px;
-    border-bottom: 1px solid rgb(237, 237, 237);
+    border-bottom: 0.5px solid rgba(237, 237, 237, 0.051);
+    /* text-align: center; */
 }
 
 .contactMe{
     text-align: center;
-    padding: 45px;
+    padding-top: 100px ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:64px
+}
+
+.contactMe a{
+    text-decoration: none;
+    background-color: #2BB1EE;
+    padding: 16px;
+    border-radius: 16px;
+    cursor: pointer;
+    color: #fff;
+      border: 1px solid transparent;
+}
+
+.contactMe a:hover{
+    border: 1px solid #2BB1EE;
+
+    background-color: #141624;
+}
+
+.linkWhatsapp{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:8px;
+}
+
+.linkWhatsapp img{
+    width: 15px;
+}
+
+textarea{
+    background-color: transparent;
+    border:none;
+    outline: none;
+
+}
+
+.workBox{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap:16px;
 }
