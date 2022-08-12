@@ -4,6 +4,26 @@
   transition: 0.5s;
   box-sizing: border-box;
 }
+
+/* width */
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: rgba(136, 136, 136, 0.186);
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.603);
+  border-radius: 8px;
+}
+
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: rgba(235, 235, 235, 0.345);
@@ -68,9 +88,9 @@ h1 {
   height: 130px;
 }
 
-.child div{
-    font-size: 13px;
-    line-height: 1.5em;
+.child div {
+  font-size: 13px;
+  line-height: 1.5em;
 }
 
 .examples .child {
@@ -133,6 +153,7 @@ textarea {
   background-color: transparent;
   border: none;
   outline: none;
+  resize: none;
 }
 
 .workBox {
@@ -140,4 +161,57 @@ textarea {
   align-items: center;
   flex-direction: column;
   gap: 16px;
+}
+
+.spinnerObject.spinner {
+  animation: spin 1s linear infinite;
+}
+
+.toolTip {
+  top: 0px;
+  font-size: 11px;
+  position: absolute;
+  width: 100px;
+  background-color: #38befa;
+  border-radius: 16px;
+  padding: 8px;
+  text-align: center;
+  color: #fff;
+}
+
+.show {
+  top: 65px;
+  opacity: 1;
+}
+.hide {
+  top: 30px;
+  opacity: 0;
+}
+
+.renderButton {
+  margin: 16px;
+  position: relative;
+  top: 13px;
+  width: 45px;
+  height: 45px;
+  background-color: #38befa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: -1px 8px 19px #0865a7;
+}
+
+.renderButton img {
+  width: 60%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

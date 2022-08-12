@@ -19,24 +19,30 @@
 
     <div class="header">
         <img src="images/dart.png" alt="">
-
         <h1>Dart Random Object Generator</h1>
     </div>
 
-    <div class="wrapper">
+    <div class="errorBox">
+        <img src="" alt="">
+        <span>Invalid class definition</span>
+    </div>
 
+    <div class="wrapper">
         <div class="workBox">
             <div class="title">Class Definition</div>
             <textarea class="area" id="schema" spellcheck="false" autocomplete="false"
                 placeholder="Place your class definition here and click generate to get a dummy object from your class"></textarea>
         </div>
-        <button onClick="generateDummyData()">Generate</button>
+        <div class="renderButton" onClick="generateDummyData();">
+            <div class="toolTip hide">Generate object</div>
+            <img src="images/cog.svg" alt="" class="spinnerObject">
+        </div>
+
         <div class="workBox">
             <div class="title">Random Object</div>
             <div id="renderArea" class="area">
             </div>
         </div>
-
     </div>
     <div class="exampleWrapper">
         <h2 class="titleExample">Example</h2>
@@ -71,9 +77,7 @@
         </a>
     </div>
 
-
     <p class="footer">Copyright 2022 - Afrographix MIT Licence</p>
-
 
     <script src="generator.js"></script>
     <script src="app.js"></script>
