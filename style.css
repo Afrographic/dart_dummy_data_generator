@@ -1,7 +1,7 @@
 * {
   font-family: "roboto";
   color: rgba(255, 255, 255, 0.623);
-  transition: 0.5s;
+
   box-sizing: border-box;
 }
 
@@ -47,6 +47,7 @@ body {
   margin: 12px 0px;
   border-bottom: 0.5px solid rgba(237, 237, 237, 0.051);
   margin-bottom: 24px;
+  padding-top: 32px;
 }
 
 .header img {
@@ -161,9 +162,11 @@ textarea {
   align-items: center;
   flex-direction: column;
   gap: 16px;
+  position: relative;
 }
 
 .spinnerObject.spinner {
+  transition: 0.5s;
   animation: spin 1s linear infinite;
 }
 
@@ -177,6 +180,7 @@ textarea {
   padding: 8px;
   text-align: center;
   color: #fff;
+  transition: 0.5s;
 }
 
 .show {
@@ -207,6 +211,45 @@ textarea {
   width: 60%;
 }
 
+.notifWidget {
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: rgb(130, 0, 0);
+  transition: 0.5s;
+  color: #fff;
+  border-radius: 16px;
+  opacity: 0;
+}
+
+.errorBox {
+  background-color: rgb(130, 0, 0);
+}
+.sucessMessage {
+  background-color: #38bdf8;
+}
+
+.notifWidget.disabled {
+  opacity: 0;
+  max-height: 0px;
+  overflow: hidden;
+  padding: 0px;
+}
+.notifWidget.visible {
+  opacity: 1;
+  max-height: 400px;
+  padding: 16px;
+}
+
+.notifWidget img {
+  width: 15px;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -214,4 +257,58 @@ textarea {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* Formating the result */
+
+.fieldItem {
+  padding-left: 12px;
+  color: #38befa;
+}
+
+.lastSemiColon {
+  color: #38befa;
+}
+
+#renderArea {
+  background-color: #292d3e;
+  color: #38befa;
+}
+
+.className {
+  font-weight: bold;
+  color: #ffcb6b;
+}
+
+.lastParentheses {
+  color: #ffcb6b;
+}
+
+.objectName,
+.fieldName {
+  color: #a6accd;
+}
+
+.fieldValue {
+  color: #f78c65;
+  padding-left: 4px;
+}
+
+.copy {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #000;
+  padding: 16px;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.copy img {
+  width: 15px;
 }

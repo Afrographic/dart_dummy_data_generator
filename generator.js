@@ -52,16 +52,10 @@ function randomDoubleGenerator() {
     return (Math.random() * 1000).toFixed(2);
 }
 
-let wasTrue = true;
 function randomBoolGenerator() {
-
-    if (wasTrue) {
-        wasTrue = false;
-        return false;
-    } else {
-        wasTrue = false;
-        return true;
-    }
+    let date = new Date();
+    let ts = date.valueOf();
+    return ts % 2 == 0;
 }
 
 function randomStringGenerator() {
@@ -77,7 +71,7 @@ function randomStringGenerator() {
 
 function validDartClassSchema(dartClassSchema) {
     dartClassSchema = dartClassSchema.trim();
-    return /^class\s+[a-zA-Z_]+\s+{\s+((int|double|bool|String)\??\s+[a-zA-Z_0-9]+;\s+)+}\s*/.test(dartClassSchema);
+    return /^class\s+[a-zA-Z_]+\s+{\s+((int|double|bool|String)\??\s+[a-zA-Z_0-9]+;\s*)+\s*}?\s*/.test(dartClassSchema);
 }
 
 function generateRandom(dataType) {
@@ -110,10 +104,19 @@ function extractClassName(dartClassSchema) {
 }
 
 function extractFields(dartClassSchema) {
+    dartClassSchema = addCloseAccoladeifWasNotGiven(dartClassSchema);
     dartClassSchema = dartClassSchema.replaceAll(/\s+/g, " ");
     let re = /^class\s+[a-zA-Z_]+\s+{(.*)}\s*/;
     let m = re.exec(dartClassSchema.trim());
     return m[1];
+}
+
+function addCloseAccoladeifWasNotGiven(schema) {
+    if (schema.includes("}")) {
+        return schema;
+    }
+    schema += '}';
+    return schema;
 }
 
 function parseFieldsStringToFieldObject(fieldString) {
@@ -136,18 +139,22 @@ function convertToFieldObject(fieldStringItem) {
 
 function renderDummyDataWithParameters(fieldsObjectsArray, classSchema) {
     let className = extractClassName(classSchema);
-    let renderer = `${className} ${getDummyClassName()} = new ${className}(`;
+    let renderer = `<span class='className'>${className}</span> <span class='objectName'>${getDummyClassName()} </span>= new  <span class='className'>${className}(</span><br>`;
     fieldsObjectsArray.forEach(fieldObject => {
-        renderer += `\n ${fieldObject.label} :${generateRandom(fieldObject.type)}`
+        renderer += `
+        <span class='fieldItem'>
+             <span class='fieldName'>${fieldObject.label} </span>:<span class="fieldValue">${generateRandom(fieldObject.type)}</span>,
+        </span>
+        <br>`
     });
-    renderer += `\n);`;
+    renderer += `<span class='lastParentheses'>)</span><span class='lastSemiColon'>;</span>`;
 
     return renderer;
 }
 
 function getDummyClassName() {
     let name = generateRandom('String').toLowerCase();
-    return name.replaceAll(/"/g,'').toLowerCase();
+    return name.replaceAll(/"/g, '').toLowerCase();
 }
 
 
