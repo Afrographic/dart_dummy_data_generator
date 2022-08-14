@@ -10,17 +10,32 @@ async function generateDummyData() {
     await dummyLoader();
     let userInput = $("#schema").value;
     if (validDartClassSchema(userInput)) {
-        
+
         let fieldString = extractFields(userInput);
         let fieldObjects = parseFieldsStringToFieldObject(fieldString);
         let dummyData = renderDummyDataWithParameters(fieldObjects, userInput);
+        $("#renderArea").classList.remove("empty");
         $("#renderArea").innerHTML = `${dummyData}`;
         // Show successfull work
         showInfoWidget($(".sucessMessage"))
+        // Show the copy button
+        showCopyButton();
     } else {
-        showInfoWidget($(".errorBox"))
+        $("#renderArea").classList.add("empty");
+        showInfoWidget($(".errorBox"));
+        hideCopyButton();
     }
 }
+function showCopyButton() {
+    $(".copy").classList.remove("disabled");
+    $(".copy").classList.add("active");
+}
+
+function hideCopyButton() {
+    $(".copy").classList.add("disabled");
+    $(".copy").classList.remove("active");
+}
+
 async function showInfoWidget(infoWidget) {
     infoWidget.classList.remove("disabled");
     infoWidget.classList.add("visible");
@@ -40,8 +55,9 @@ function showToolTip() {
     })
 }
 
-function copy() {
-    console.log($("#renderArea").innerText);
+async function copy() {
+    await navigator.clipboard.writeText($("#renderArea").innerText.trim());
+    showInfoWidget($(".successCopy"));
 }
 
 
