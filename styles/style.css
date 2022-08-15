@@ -163,6 +163,7 @@ textarea {
   flex-direction: column;
   gap: 16px;
   position: relative;
+
 }
 
 .spinnerObject.spinner {
@@ -226,6 +227,7 @@ textarea {
   color: #fff;
   border-radius: 16px;
   opacity: 0;
+
 }
 
 .errorBox {
@@ -333,7 +335,7 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("images/noRender.svg");
+  background-image: url("../images/noRender.svg");
   background-repeat: no-repeat;
   background-size: 80px;
   background-position: center;
@@ -350,3 +352,5 @@ textarea {
     transform: scale(1);
   }
 }
+
+

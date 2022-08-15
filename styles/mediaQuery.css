@@ -1,0 +1,69 @@
+@media (max-width: 1000px) {
+  .header {
+    width: 100%;
+    padding-top: 10px;
+  }
+  .wrapper {
+    width: 100%;
+    margin-bottom: 29px;
+  }
+  h1 {
+    font-size: 20px !important;
+  }
+
+  .child div {
+    font-size: 9px;
+  }
+
+  .child p {
+    font-size: 10px;
+  }
+
+  .titleExample {
+    font-size: 16px;
+  }
+
+  .contactMe {
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 50px;
+  }
+
+  .workBox {
+    width: 100%;
+  }
+
+  .renderBox {
+    position: absolute;
+    display: none;
+  }
+
+  .renderButton {
+    position: fixed;
+    left: 45%;
+    bottom: 5px;
+    transform: translate(-50%, -50%);
+    top: auto;
+  }
+
+  .notifWidget {
+    font-size: 11px;
+  }
+
+  .examples {
+    width: auto;
+    gap: 16px;
+  }
+  .area {
+    width: 95%;
+  }
+
+  .exampleWrapper {
+    padding: 16px;
+  }
+
+  .footer {
+    font-size: 11px;
+    margin-top: 27px;
+  }
+}
