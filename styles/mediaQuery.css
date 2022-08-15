@@ -31,11 +31,32 @@
 
   .workBox {
     width: 100%;
+
+    opacity: 0;
   }
 
   .renderBox {
     position: absolute;
-    display: none;
+    padding: 13px;
+  }
+
+  .inputBoxMobile.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .inputBoxMobile.disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .renderBoxMobile.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .renderBoxMobile.disabled {
+    opacity: 0;
+    pointer-events: none;
   }
 
   .renderButton {
@@ -65,5 +86,27 @@
   .footer {
     font-size: 11px;
     margin-top: 27px;
+  }
+  .show {
+    top: -39px;
+  }
+
+  .copyWrapper {
+    position: fixed;
+    top: auto;
+    left: 50%;
+    right: auto;
+    bottom: 15px;
+    transform: translate(-50%, -50%);
+  } 
+
+  .copyWrapper.disabled {
+    bottom: auto;
+    opacity: 0 !important;
+    pointer-events: none;
+  }
+  .renderButton.disabled {
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
 }

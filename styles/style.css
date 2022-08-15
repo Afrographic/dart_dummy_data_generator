@@ -1,7 +1,7 @@
 * {
   font-family: "roboto";
   color: rgba(255, 255, 255, 0.623);
-
+  transition: 0.5s;
   box-sizing: border-box;
 }
 
@@ -163,7 +163,6 @@ textarea {
   flex-direction: column;
   gap: 16px;
   position: relative;
-
 }
 
 .spinnerObject.spinner {
@@ -227,7 +226,6 @@ textarea {
   color: #fff;
   border-radius: 16px;
   opacity: 0;
-
 }
 
 .errorBox {
@@ -299,8 +297,6 @@ textarea {
 }
 
 .copy {
-  position: absolute;
-  right: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -313,18 +309,6 @@ textarea {
 }
 .copy:hover {
   transform: scale(1.05);
-}
-
-.copy.disabled {
-  bottom: -5px;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.copy.active {
-  opacity: 1;
-  bottom: 15px;
-  pointer-events: auto;
 }
 
 .copy img {
@@ -353,4 +337,34 @@ textarea {
   }
 }
 
+.copyWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  position: absolute;
+  right: 15px;
+  pointer-events: auto;
+}
 
+.copyWrapper.disabled {
+  bottom: -5px;
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.copyWrapper.active {
+  opacity: 1;
+  bottom: 15px;
+  pointer-events: auto;
+  /* animation: fade 1s ease 1; */
+}
+
+.addNewClass {
+  width: 45px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.addNewClass:hover {
+  transform: scale(1.05);
+}

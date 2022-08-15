@@ -14,26 +14,61 @@ async function generateDummyData() {
         let fieldString = extractFields(userInput);
         let fieldObjects = parseFieldsStringToFieldObject(fieldString);
         let dummyData = renderDummyDataWithParameters(fieldObjects, userInput);
+
         $("#renderArea").classList.remove("empty");
         $("#renderArea").innerHTML = `${dummyData}`;
         // Show successfull work
         showInfoWidget($(".sucessMessage"))
         // Show the copy button
         showCopyButton();
+        // Mobile behavior
+        showRenderViewForMobile();
+        hideGenerateButton();
     } else {
         $("#renderArea").classList.add("empty");
         showInfoWidget($(".errorBox"));
         hideCopyButton();
     }
 }
+
+function showRenderViewForMobile() {
+    hideInputViewForMobile();
+    $(".renderBoxMobile").classList.remove("disabled");
+    $(".renderBoxMobile").classList.add("active");
+}
+
+function hideInputViewForMobile() {
+    $(".inputBoxMobile").classList.add("disabled");
+    $(".inputBoxMobile").classList.remove("active");
+}
+
+function showInputViewForMobile() {
+    HideRenderViewForMobile();
+    $(".inputBoxMobile").classList.remove("disabled");
+    $(".inputBoxMobile").classList.add("active");
+}
+
+function HideRenderViewForMobile() {
+    $(".renderBoxMobile").classList.add("disabled");
+    $(".renderBoxMobile").classList.remove("active");
+}
+
+function hideGenerateButton() {
+    $(".renderButton").classList.add("disabled");
+}
+function showGenerateButton() {
+    $(".renderButton").classList.remove("disabled");
+}
+
+
 function showCopyButton() {
-    $(".copy").classList.remove("disabled");
-    $(".copy").classList.add("active");
+    $(".copyWrapper").classList.remove("disabled");
+    $(".copyWrapper").classList.add("active");
 }
 
 function hideCopyButton() {
-    $(".copy").classList.add("disabled");
-    $(".copy").classList.remove("active");
+    $(".copyWrapper").classList.add("disabled");
+    $(".copyWrapper").classList.remove("active");
 }
 
 async function showInfoWidget(infoWidget) {
@@ -66,3 +101,14 @@ showToolTip();
 async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+function resetFields() {
+    $("#schema").value = '';
+    $("#renderArea").innerHTML = '';
+    $("#renderArea").classList.add("empty");
+    hideCopyButton();
+    showInputViewForMobile();
+    showGenerateButton();
+}
+
+// class Afro { int idUser; double?height; bool isFound; String name; }

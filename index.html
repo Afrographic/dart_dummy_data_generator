@@ -40,7 +40,7 @@
     </div>
 
     <div class="wrapper">
-        <div class="workBox">
+        <div class="workBox inputBoxMobile active">
             <div class="title">Class Definition</div>
             <textarea class="area" id="schema" spellcheck="false" autocomplete="false"
                 placeholder="Place your class definition here and click generate to get a dummy object from your class"></textarea>
@@ -50,14 +50,18 @@
             <img src="images/cog.svg" alt="" class="spinnerObject">
         </div>
 
-        <div class="workBox renderBox">
+        <div class="workBox renderBox renderBoxMobile disabled">
             <div class="title">Random Object</div>
             <div id="renderArea" class="area empty">
             </div>
-            <div class="copy disabled" onclick="copy()">
-                <img src="images/copy.svg" alt="">
-                <span>Copy</span>
+            <div class="copyWrapper disabled">
+                <img src="images/addNew.svg" alt="" class="addNewClass" onclick="resetFields()">
+                <div class="copy " onclick="copy()">
+                    <img src="images/copy.svg" alt="">
+                    <span>Copy</span>
+                </div>
             </div>
+
         </div>
     </div>
     <div class="exampleWrapper">
