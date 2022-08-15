@@ -1,4 +1,6 @@
 
+
+// Hosted on Netlify
 async function dummyLoader() {
     $(".spinnerObject").classList.add("spinner");
     await sleep(500);

@@ -71,7 +71,7 @@ function randomStringGenerator() {
 
 function validDartClassSchema(dartClassSchema) {
     dartClassSchema = dartClassSchema.trim();
-    return /^class\s+[a-zA-Z_]+\s+{\s+((int|double|bool|String)\??\s+[a-zA-Z_0-9]+;\s*)+\s*}\s*/.test(dartClassSchema);
+    return /^(class|Class)\s+[a-zA-Z_]+\s*{\s+((int|double|bool|String)\??\s+[a-zA-Z_0-9]+;\s*)+\s*}\s*/.test(dartClassSchema);
 }
 
 function generateRandom(dataType) {
@@ -106,7 +106,7 @@ function extractClassName(dartClassSchema) {
 function extractFields(dartClassSchema) {
     dartClassSchema = addCloseAccoladeifWasNotGiven(dartClassSchema);
     dartClassSchema = dartClassSchema.replaceAll(/\s+/g, " ");
-    let re = /^class\s+[a-zA-Z_]+\s+{(.*)}\s*/;
+    let re = /^class\s+[a-zA-Z_]+\s*{(.*)}\s*/;
     let m = re.exec(dartClassSchema.trim());
     return m[1];
 }
