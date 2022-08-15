@@ -98,17 +98,21 @@ function generateRandom(dataType) {
 }
 
 function extractClassName(dartClassSchema) {
-    let re = /class\s+([a-zA-Z_]+).*/;
+
+    let re = /(class|Class)\s+([a-zA-Z_]+).*/;
     let m = re.exec(dartClassSchema);
-    return m[1];
+    return capitalizeFirstLetter(m[2]);
 }
 
 function extractFields(dartClassSchema) {
+
     dartClassSchema = addCloseAccoladeifWasNotGiven(dartClassSchema);
     dartClassSchema = dartClassSchema.replaceAll(/\s+/g, " ");
-    let re = /^class\s+[a-zA-Z_]+\s*{(.*)}\s*/;
+   
+    let re = /^(class|Class)\s+[a-zA-Z_]+\s*{(.*)}\s*/;
     let m = re.exec(dartClassSchema.trim());
-    return m[1];
+    console.log(m);
+    return m[2];
 }
 
 function addCloseAccoladeifWasNotGiven(schema) {
