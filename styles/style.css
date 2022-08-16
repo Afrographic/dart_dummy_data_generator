@@ -74,10 +74,10 @@ body {
 
 h1 {
   text-align: center;
+  margin-bottom: 0px;
 }
 
 .footer {
-  margin-top: 64px;
   text-align: center;
   color: rgba(170, 170, 170, 0.23);
 }
@@ -367,4 +367,28 @@ textarea {
 }
 .addNewClass:hover {
   transform: scale(1.05);
+}
+
+.soon{
+  padding: 16px 0px;
+  opacity: 0.4;
+  font-size: 12px;
+}
+
+.socialMedias{
+  margin:36px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:12px;
+}
+
+.socialMedias img{
+  cursor: pointer;
+  width: 30px;
+
+}
+
+.socialMedias img:hover{
+  opacity: 0.6;
 }
